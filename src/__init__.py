@@ -1,0 +1,1 @@
+"""Chabeille Discord Bot package."""

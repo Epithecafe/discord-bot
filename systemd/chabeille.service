@@ -1,0 +1,25 @@
+[Unit]
+Description=Chabeille Discord Bot - Gestion des membres
+After=network.target
+
+[Service]
+Type=simple
+User=debian
+WorkingDirectory=/opt/chabeille
+EnvironmentFile=/opt/chabeille/.env
+ExecStart=/opt/chabeille/venv/bin/python /opt/chabeille/main.py
+Restart=always
+RestartSec=10
+
+# Sécurisation du service (optionnel mais recommandé sur Debian)
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/chabeille/data
+
+# Logs vers journalctl
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=chabeille-bot
+
+[Install]
+WantedBy=multi-user.target
